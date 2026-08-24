@@ -4,12 +4,12 @@
        class="in-text"
        default-locale="en-GB">
   <info>
-    <title>Geostandards and Geoanalytical Research</title>
+    <title>Geostandards and Geoanalytical Research (custom)</title>
     <title-short>GGR</title-short>
-    <id>https://www.zotero.org/styles/geostandards-and-geoanalytical-research-custom</id>
+    <id>https://www.zotero.org/styles/geostandards-and-geoanalytical-research-custom-2026</id>
     <link href="https://onlinelibrary.wiley.com/page/journal/1751908x/homepage/forauthors.html" rel="documentation"/>
     <updated>2026-08-24T00:00:00+00:00</updated>
-    <rights license="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</rights>
+    <rights license="https://creativecommons.org/licenses/by-sa/4.0/">Custom CSL based on the journal's author guidelines.</rights>
   </info>
 
   <macro name="author-citation">
@@ -38,6 +38,18 @@
     </names>
   </macro>
 
+  <macro name="editor-bibliography">
+    <names variable="editor">
+      <name name-as-sort-order="all"
+            sort-separator=" "
+            initialize-with=". "
+            and="text"
+            delimiter=", "
+            delimiter-precedes-last="never"/>
+      <label variable="editor" form="short" prefix=" (" suffix=")"/>
+    </names>
+  </macro>
+
   <citation disambiguate-add-year-suffix="true" collapse="year">
     <layout prefix="(" suffix=")" delimiter=", ">
       <group delimiter=" ">
@@ -45,7 +57,6 @@
         <date variable="issued">
           <date-part name="year"/>
         </date>
-        <text variable="year-suffix"/>
       </group>
     </layout>
   </citation>
@@ -57,18 +68,17 @@
       <key variable="title"/>
     </sort>
 
-    <layout>
+    <layout suffix=".">
       <text macro="author-bibliography"/>
       <date variable="issued" prefix=" (" suffix=")">
         <date-part name="year"/>
-        <text variable="year-suffix"/>
       </date>
 
       <choose>
         <if type="article-journal">
           <text variable="title" prefix=" "/>
           <group prefix=". ">
-            <text variable="container-title"/>
+            <text variable="container-title" font-style="italic"/>
             <text variable="volume" prefix=", "/>
             <text variable="page" prefix=", "/>
           </group>
@@ -77,18 +87,11 @@
         <else-if type="chapter paper-conference entry-dictionary entry-encyclopedia">
           <text variable="title" prefix=" "/>
           <group prefix=". In: ">
-            <names variable="editor">
-              <name name-as-sort-order="all"
-                    sort-separator=" "
-                    initialize-with=". "
-                    and="text"
-                    delimiter=", "
-                    delimiter-precedes-last="never"/>
-              <label form="short" prefix=" (" suffix=")"/>
-            </names>
+            <text macro="editor-bibliography"/>
             <text variable="container-title" prefix=", "/>
-            <text variable="publisher" prefix=", "/>
-            <text variable="publisher-place" prefix=", "/>
+            <text variable="publisher" prefix=". "/>
+            <text variable="publisher-place" prefix=" ("
+                  suffix=")"/>
             <text variable="page" prefix=", "/>
           </group>
         </else-if>
@@ -97,7 +100,8 @@
           <text variable="title" prefix=" "/>
           <group prefix=". ">
             <text variable="publisher"/>
-            <text variable="publisher-place" prefix=", "/>
+            <text variable="publisher-place" prefix=" ("
+                  suffix=")"/>
             <text variable="number-of-pages" prefix=", "/>
             <text value=" p."/>
           </group>
@@ -106,7 +110,7 @@
         <else>
           <text variable="title" prefix=" "/>
           <group prefix=". ">
-            <text variable="container-title"/>
+            <text variable="container-title" font-style="italic"/>
             <text variable="volume" prefix=", "/>
             <text variable="page" prefix=", "/>
           </group>

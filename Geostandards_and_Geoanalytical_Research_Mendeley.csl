@@ -8,7 +8,7 @@
     <updated>2026-08-24T00:00:00+00:00</updated>
   </info>
 
-  <citation disambiguate-add-year-suffix="true" collapse="year">
+  <citation disambiguate-add-year-suffix="true" collapse="year-suffix" year-suffix-delimiter=",">
     <layout prefix="(" suffix=")" delimiter=", ">
       <group delimiter=" ">
         <names variable="author">

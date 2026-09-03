@@ -32,37 +32,48 @@
    <layout>
 
   <!-- AUTHORS AND YEAR -->
+<!-- AUTHORS AND YEAR -->
 <group display="block">
-  <names variable="author" font-weight="bold">
-    <name name-as-sort-order="all"
-          sort-separator=" "
-          initialize-with=". "
-          and="text"
-          delimiter=", "
-          delimiter-precedes-last="never"/>
-    <substitute>
-      <text variable="title"/>
-    </substitute>
-  </names>
+    <names variable="author">
+        <name name-as-sort-order="all"
+              sort-separator=" "
+              initialize-with=". "
+              and="text"
+              delimiter=", "
+              delimiter-precedes-last="never"
+              font-weight="bold"/>
+    </names>
 
-  <date variable="issued" prefix=" (" suffix=")" font-weight="bold">
-    <date-part name="year"/>
-  </date>
+    <date variable="issued"
+          prefix=" ("
+          suffix=")"
+          font-weight="bold">
+        <date-part name="year"/>
+    </date>
 </group>
-  <choose>
+
+<choose>
 
     <!-- JOURNAL ARTICLES -->
     <if type="article-journal">
-      <text variable="title" suffix=". "/>
 
-      <group font-weight="bold" delimiter=", ">
-        <text variable="container-title"/>
-        <text variable="volume"/>
-      </group>
+        <text variable="title"
+              font-weight="normal"
+              suffix=". "/>
 
-     <text variable="page" prefix=", " suffix="."/>
+        <text variable="container-title"
+              font-weight="bold"
+              suffix=", "/>
+
+        <text variable="volume"
+              font-weight="normal"
+              suffix=", "/>
+
+        <text variable="page"
+              font-weight="normal"
+              suffix="."/>
+
     </if>
-
       <!-- BOOKS AND THESES -->
     <else-if type="book thesis">
       <text variable="title" suffix=". "/>
